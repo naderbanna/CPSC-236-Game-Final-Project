@@ -7,6 +7,9 @@ TagManager:
   - GemstoneY
   - GemstoneP
   - TurrentBullet
+  - PlayerBullet
+  - EnemyBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,9 +22,9 @@ TagManager:
   - Background
   - Environment
   - Player
-  - 
-  - 
-  - 
+  - Turrent
+  - Skeleton
+  - Boss
   - 
   - 
   - 

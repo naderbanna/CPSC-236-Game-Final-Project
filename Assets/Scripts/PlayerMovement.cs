@@ -8,7 +8,11 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
     public Animator animator;
 
+    public Transform firePoint;
+    public GameObject playerBullet;
+
     public float runSpeed = 25f;
+    public int health = 100;
     public bool hasJumpPotion = false;
     public bool hasSpeedPotion = false;
     public bool hasGun = false;
@@ -17,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip jumpClip;
 
     private Text scoreText;
+    private Text healthText;
 
     private float potionTimeMax = 10f;
     private float potionTimeCur = 0f;
@@ -28,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        healthText = GameObject.Find("Player Health").GetComponent<Text>();
+
     }
     // Update is called once per frame
     void Update()
@@ -54,14 +61,49 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButtonDown("Shoot") || Input.GetButtonDown("Fire2"))
         {
+            Shoot();
+        
+        }
+    }
+
+    void Shoot()
+    {
+       
+        StartCoroutine(MyCoroutine());
+       
+        IEnumerator MyCoroutine()
+        {
+            animator.SetBool("IsShooting", true);
+            Instantiate(playerBullet, firePoint.position, firePoint.rotation);
+            yield return new WaitForSeconds(.4f);
+            animator.SetBool("IsShooting", false);
 
         }
     }
 
+    
+    public void TakeDamage (int damage)
+    {
+        health -= damage;
+        healthText.GetComponent<HealthController>().health -= damage;
+        healthText.GetComponent<HealthController>().UpdateScore();
+        if (health <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
         jump = false;
+    }
+
+    public void OnShooting(bool isShooting)
+    {
+        animator.SetBool("IsShooting", isShooting);
     }
 
     void FixedUpdate()
@@ -97,5 +139,6 @@ public class PlayerMovement : MonoBehaviour
             scoreText.GetComponent<ScoreController>().score += 10;
             scoreText.GetComponent<ScoreController>().UpdateScore();
         }
+       
     }
 }

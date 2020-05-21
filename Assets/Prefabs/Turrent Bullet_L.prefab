@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 3586011784121096467}
   - component: {fileID: 320135411}
   m_Layer: 10
-  m_Name: Turrent Bullet
-  m_TagString: TurrentBullet
+  m_Name: Turrent Bullet_L
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &3586011784121096463
 MonoBehaviour:
@@ -119,6 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -3
+  impactEffect: {fileID: 1629462912561964581, guid: 7a03117b65d71f34082316e40a5e9dfe,
+    type: 3}
+  damage: 10
 --- !u!95 &3586011784121096467
 Animator:
   serializedVersion: 3

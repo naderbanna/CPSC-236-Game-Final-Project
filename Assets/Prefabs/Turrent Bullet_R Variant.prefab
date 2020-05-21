@@ -17,6 +17,12 @@ PrefabInstance:
       propertyPath: speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3586011784121096463, guid: ae8ed223a02fb7149ba0ccb43bd24945,
+        type: 3}
+      propertyPath: impactEffect
+      value: 
+      objectReference: {fileID: 1629462912561964581, guid: 7a03117b65d71f34082316e40a5e9dfe,
+        type: 3}
     - target: {fileID: 3586011784121096464, guid: ae8ed223a02fb7149ba0ccb43bd24945,
         type: 3}
       propertyPath: m_LocalPosition.x

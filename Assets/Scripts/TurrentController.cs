@@ -5,28 +5,51 @@ using UnityEngine;
 public class TurrentController : MonoBehaviour
 {
     public GameObject bullet;
+    public GameObject deathEffect;
 
-    float fireRate;
-    float nextFire;
+    public int health = 30;
+
+    
+    private float timeBtwShots;
+    public float startTimeBtwShots;
+
     // Start is called before the first frame update
     void Start()
     {
-        fireRate = 2.5f;
-        nextFire = Time.time;
+        
+
+        timeBtwShots = startTimeBtwShots;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckIfTimeToFire();
+        if(timeBtwShots <= 0)
+        {
+            Instantiate(bullet, transform.position + new Vector3(0, 0.23f, 0), Quaternion.identity);
+            timeBtwShots = startTimeBtwShots;
+        }
+        else
+        {
+            timeBtwShots -= Time.deltaTime;
+        }
+        
     }
 
-    void CheckIfTimeToFire()
+   
+
+    public void TakeDamage (int damage)
     {
-        if (Time.time > nextFire)
+        health -= damage;
+        if (health <= 0)
         {
-            Instantiate(bullet, transform.position + new Vector3(0,0.23f,0), Quaternion.identity);
-            nextFire = Time.time + fireRate;
+            Die();
         }
+    }
+
+    void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

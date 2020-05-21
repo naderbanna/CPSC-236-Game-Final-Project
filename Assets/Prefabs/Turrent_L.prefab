@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3254458179686036165}
   - component: {fileID: 3254458179686036168}
   - component: {fileID: 3254458179686036170}
-  m_Layer: 10
+  - component: {fileID: 1955266678}
+  m_Layer: 11
   m_Name: Turrent_L
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3254458179686036164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.25, y: -4.69, z: -8.111404}
-  m_LocalScale: {x: 2.626304, y: 2.626304, z: 2.626304}
+  m_LocalScale: {x: 3.1, y: 3.1, z: 3.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,6 +117,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3586011784121096460, guid: ae8ed223a02fb7149ba0ccb43bd24945, type: 3}
+  deathEffect: {fileID: 3596541016854269160, guid: 63d8ab6421075cf4b9588e0889569a57,
+    type: 3}
+  health: 30
+  startTimeBtwShots: 1.5
 --- !u!50 &3254458179686036170
 Rigidbody2D:
   serializedVersion: 4
@@ -137,3 +142,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &1955266678
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254458179686036164}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.125

@@ -6,6 +6,8 @@ public class TurrentBulletController : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb;
+    public GameObject impactEffect;
+    public int damage = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +16,19 @@ public class TurrentBulletController : MonoBehaviour
         Destroy(gameObject, 8f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (collision.gameObject.name.Equals("Player"))
+        PlayerMovement player = hitInfo.GetComponent<PlayerMovement>();
+        if (player != null)
         {
+            Instantiate(impactEffect, transform.position, Quaternion.identity);
+            player.TakeDamage(damage);
             Destroy(gameObject);
-            Destroy(collision.gameObject);
         }
+
+        PlayerBulletController bullet = hitInfo.GetComponent<PlayerBulletController>();
+        if (bullet != null)
+            Instantiate(impactEffect, transform.position, Quaternion.identity);
     }
+    
 }
