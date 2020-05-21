@@ -27,7 +27,7 @@ public class PlayerBulletController : MonoBehaviour
         }
         Destroy(gameObject);
 
-        if (hitInfo.gameObject.tag.Equals("TurrentBullet"))
+        if (hitInfo.gameObject.tag.Equals("EnemyBullet"))
             Destroy(hitInfo.gameObject);
         Destroy(gameObject);
 

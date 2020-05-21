@@ -16,6 +16,7 @@ public class BossController : MonoBehaviour
 
     public GameObject projectile;
     private Text healthText;
+    private Text scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class BossController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBtwShots = startTimeBtwShots;
         healthText = GameObject.Find("BossHealth").GetComponent<Text>();
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
 
     }
 
@@ -63,6 +65,8 @@ public class BossController : MonoBehaviour
 
     void Die()
     {
+        scoreText.GetComponent<ScoreController>().score += 1000;
+        scoreText.GetComponent<ScoreController>().UpdateScore();
         Destroy(gameObject);
     }
 }
